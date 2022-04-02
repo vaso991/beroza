@@ -27,9 +27,7 @@ const path = require('path');
   // Print graph
   const maxValue = Math.max(...inputData);
   let minValue = Math.min(...inputData);
-  const occurrences = inputData.reduce(function (obj, curr) {
-    return obj[curr] ? ++obj[curr] : obj[curr] = 1, obj
-  }, {});
+  const occurrences = inputData.reduce((obj, curr) => ((obj[curr] = ++obj[curr] || 1), obj), {});
   const maxVerticalLines = Math.max(...Object.values(occurrences));
   let strGraph = '';
   for (let i = maxVerticalLines; i > 0; i--) {
