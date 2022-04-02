@@ -25,7 +25,19 @@ const path = require('path');
   console.log('Bigger elements:', elementsBiggerThanMeanAndStandartDeviation);
 
   // Print graph
-  let graph = '';
-  inputData.forEach((value) => graph += value > sum ? '^' : '*');
-  console.log('Graph:', graph);
+  // let graph = '';
+  // inputData.forEach((value) => graph += value > sum ? '^' : '*');
+  // console.log('Graph:', graph);
+  let maxValue = Math.max(...inputData);
+  const minValue = Math.min(...inputData);
+  while (maxValue >= minValue) {
+    let rowStr = '';
+    for (const col in inputData) {
+      const element = inputData[col];
+      const symbol = element < maxValue ? ' ' : (element > sum ? '^' : '*');
+      rowStr += symbol;
+    }
+    console.log(maxValue.toString().padStart(3), rowStr);
+    maxValue--;
+  }
 })();
